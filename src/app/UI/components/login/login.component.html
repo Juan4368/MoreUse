@@ -15,8 +15,7 @@
                         <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
 
                         <div class="form-outline mb-4">
-                            <input type="email" id="form2Example18" class="form-control form-control-lg"
-                                formControlName="email" />
+                            <input type="email" id="form2Example18" class="form-control form-control-lg" formControlName="email" />
                             <label class="form-label" for="form2Example18">Email address</label>
                             <div *ngIf="campos['email'].touched || campos['email'].dirty">
                                 <div *ngFor="let validation of validationMessages.email">
@@ -27,8 +26,7 @@
                         </div>
 
                         <div class="form-outline mb-4">
-                            <input type="password" id="form2Example28" class="form-control form-control-lg"
-                                formControlName="password" />
+                            <input type="password" id="form2Example28" class="form-control form-control-lg" formControlName="password" />
                             <label class="form-label" for="form2Example28">Password</label>
                             <div *ngIf="campos['password'].touched || campos['password'].dirty">
                                 <div *ngFor="let validation of validationMessages.password">
