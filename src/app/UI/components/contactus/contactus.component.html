@@ -20,6 +20,12 @@
   
             <!-- Email -->
             <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail" formControlName="email">
+            <div *ngIf="campos['email'].touched || campos['email'].dirty">
+              <div *ngFor="let validation of validationMessages.email">
+                  <label class="text-danger"
+                      *ngIf="campos['email'].hasError(validation.type)">{{validation.message}}</label>
+              </div>
+            </div>
   
             <!-- Subject -->
             <label>Subject</label>
@@ -42,6 +48,7 @@
             <div class="custom-control custom-checkbox mb-4">
               <input type="checkbox" class="custom-control-input" id="defaultContactFormCopy">
               <label class="custom-control-label" for="defaultContactFormCopy">Send me a copy of this message</label>
+              
             </div>
   
             <!-- Send button -->

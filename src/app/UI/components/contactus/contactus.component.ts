@@ -7,14 +7,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./contactus.component.css']
 })
 export class ContactusComponent implements OnInit { //inicializa el formulario cada vez que se ejecuta un cambio
-
   contacusForm!: FormGroup;
+  public validationMessages = {
+  email: [
+    { type: 'required', message: 'Este campo es requerido' },
+    { type: 'email', message: 'Este campo es de tipo email' }
+  ]
+}
+
+  
   constructor(private formBuilder: FormBuilder) { }
   ngOnInit(): void {
     this.contacusForm = this.formBuilder.group({
       name: ['name', [
-        Validators.required
-      ]
+        Validators.required,
+        Validators.pattern('[a-zA-Z ]*')]
+      
       ],
       email: ['email', [
         Validators.required,
@@ -23,7 +31,7 @@ export class ContactusComponent implements OnInit { //inicializa el formulario c
       ],
       message: ['message', [
         Validators.required,
-        Validators.maxLength(260)
+        Validators.maxLength(250)
       ]]
     })
   }
@@ -33,8 +41,11 @@ export class ContactusComponent implements OnInit { //inicializa el formulario c
       alert('Mensaje enviado con exito')
     }
     else {
-      alert('valida por favor los campos');
+      alert('El mensaje no pudo ser enviado');
     }
   }
 
+  public get campos() {
+    return this.contacusForm.controls
+  }
 }
